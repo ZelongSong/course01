@@ -1,0 +1,66 @@
+logging:
+ config: classpath:logback.xml
+ level:
+  com.itcodai.course01.dao: trace
+spring:
+ profiles:
+  active:
+   - dev
+ thymeleaf:
+  cache: false #关闭缓存
+ datasource: # 数据库配置
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://${datasource.url}?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+  username: root
+  password: 123456
+  hikari:
+   maximum-pool-size: 10 # 最大连接池数
+   max-lifetime: 1770000
+   #redis相关配置
+ redis:
+  database: 5
+  # 配置redis的主机地址，需要修改成自己的
+  host: 192.168.48.190
+  port: 6379
+  password: 123456
+  timeout: 5000
+  jedis:
+   pool:
+    # 连接池中的最大空闲连接，默认值也是8。
+    max-idle: 500
+    # 连接池中的最小空闲连接，默认值也是0。
+    min-idle: 50
+    # 如果赋值为-1，则表示不限制；如果pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted(耗尽)
+    max-active: 1000
+    # 等待可用连接的最大时间，单位毫秒，默认值为-1，表示永不超时。如果超过等待时间，则直接抛出JedisConnectionException
+    max-wait: 2000
+ activemq:
+  # activemq url
+  broker-url: tcp://localhost:61616
+  in-memory: true
+  pool:
+   # 如果此处设置为true，需要添加activemq-pool的依赖包，否则会自动配置失败，无法注入JmsMessagingTemplate
+   enabled: false
+ #发布/订阅消息的消费和点对点不同，订阅消息支持多个消费者一起消费。其次，Spring Boot 中默认的时点对点消息，所以在使用 topic 时，会不起作用
+ #jms:
+  #pub-sub-domain: true
+# 数据库地址
+datasource:
+ url: localhost:3306/blog_test
+
+mybatis:
+ # 指定别名设置的包为所有entity
+ type-aliases-package: com.itcodai.course01.entity
+ configuration:
+  map-underscore-to-camel-case: true # 驼峰命名规范
+ mapper-locations: # mapper映射文件位置
+  - classpath:mapper/*.xml
+
+ # 配置多个微服务的地址
+url:
+ # 订单微服务的地址
+ orderUrl: http://localhost:8003
+ # 用户微服务的地址
+ userUrl: http://localhost:8004
+ # 购物车微服务的地址
+ shoppingUrl: http://localhost:8005
