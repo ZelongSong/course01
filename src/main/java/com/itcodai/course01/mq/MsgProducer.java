@@ -1,9 +1,10 @@
 package com.itcodai.course01.mq;
 
+import org.apache.activemq.broker.region.Destination;
+import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.print.attribute.standard.Destination;
 
 /**
  * 消息发送者
@@ -16,6 +17,6 @@ public class MsgProducer {
     private JmsMessagingTemplate jmsMessagingTemplate;
 
     public void sendMessage(Destination destination, String msg) {
-        jmsMessagingTemplate.convertAndSend(destination, msg);
+        jmsMessagingTemplate.convertAndSend(destination.getName(), msg);
     }
 }

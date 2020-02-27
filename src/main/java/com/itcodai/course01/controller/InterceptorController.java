@@ -11,6 +11,7 @@ public class InterceptorController {
     @RequestMapping("/test")
     //@UnInterception
     public String test() {
+
         return "hello";
     }
 }

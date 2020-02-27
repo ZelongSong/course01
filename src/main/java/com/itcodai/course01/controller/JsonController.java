@@ -16,14 +16,14 @@ import java.util.Map;
 public class JsonController {
     @RequestMapping("/user")
     public User getUser() {
-        return new User((long) 1, "倪升武", "123456");
+        return new User((long) 1, "倪升武", "123456", null);
     }
 
     @RequestMapping("/list")
     public List<User> getUserList() {
         List<User> userList = new ArrayList<>();
-        User user1 = new User((long)1, "倪升武", null);
-        User user2 = new User((long)2, "达人课", "123456");
+        User user1 = new User((long)1, "倪升武", null, null);
+        User user2 = new User((long)2, "达人课", "123456", null);
         userList.add(user1);
         userList.add(user2);
         log.info(userList);
@@ -33,7 +33,7 @@ public class JsonController {
     @RequestMapping("/map")
     public Map<String, Object> getMap() {
         Map<String, Object> map = new HashMap<>(3);
-        User user = new User((long)1, "倪升武", null);
+        User user = new User((long)1, "倪升武", null, null);
         map.put("作者信息", user);
         map.put("博客地址", "http://blog.itcodai.com");
         map.put("CSDN地址", "http://blog.csdn.net/eson_15");

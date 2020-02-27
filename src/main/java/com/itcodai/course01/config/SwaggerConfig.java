@@ -24,7 +24,7 @@ public class SwaggerConfig {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                // 指定构建api文档的详细信息的方法：apiInfo()
+                // 指定构建api文档的详细信息的方法： apiInfo()
                 .apiInfo(apiInfo())
                 .select()
                 // 指定要生成api接口的包路径，这里把controller作为包路径，生成controller中的所有接口

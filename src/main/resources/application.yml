@@ -34,16 +34,19 @@ spring:
     max-active: 1000
     # 等待可用连接的最大时间，单位毫秒，默认值为-1，表示永不超时。如果超过等待时间，则直接抛出JedisConnectionException
     max-wait: 2000
- activemq:
+ #activemq:
   # activemq url
-  broker-url: tcp://localhost:61616
-  in-memory: true
-  pool:
+  #broker-url: tcp://localhost:61616
+  #in-memory: true
+  #pool:
    # 如果此处设置为true，需要添加activemq-pool的依赖包，否则会自动配置失败，无法注入JmsMessagingTemplate
-   enabled: false
+   #enabled: false
  #发布/订阅消息的消费和点对点不同，订阅消息支持多个消费者一起消费。其次，Spring Boot 中默认的时点对点消息，所以在使用 topic 时，会不起作用
  #jms:
   #pub-sub-domain: true
+
+ #thymeleaf start
+
 # 数据库地址
 datasource:
  url: localhost:3306/blog_test
@@ -55,6 +58,8 @@ mybatis:
   map-underscore-to-camel-case: true # 驼峰命名规范
  mapper-locations: # mapper映射文件位置
   - classpath:mapper/*.xml
+
+
 
  # 配置多个微服务的地址
 url:

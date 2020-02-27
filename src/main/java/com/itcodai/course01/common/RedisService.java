@@ -1,5 +1,10 @@
 package com.itcodai.course01.common;
 
+import org.springframework.data.redis.core.HashOperations;
+import org.springframework.data.redis.core.ListOperations;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+
 import javax.annotation.Resource;
 import java.util.List;
 

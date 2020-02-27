@@ -16,15 +16,15 @@ public class JsonResultController {
 
     @RequestMapping("/user")
     public JsonResult<User> getUser() {
-        User user = new User((long)1, "倪升武", "123456");
+        User user = new User((long)1, "倪升武", "123456", null);
         return new JsonResult<>(user);
     }
 
     @RequestMapping("/list")
     public JsonResult<List> getUserList() {
         List<User> userList = new ArrayList<>();
-        User user1 = new User((long)1, "倪升武", "123456");
-        User user2 = new User((long)2, "达人课", "123456");
+        User user1 = new User((long)1, "倪升武", "123456", null);
+        User user2 = new User((long)2, "达人课", "123456", null);
         userList.add(user1);
         userList.add(user2);
         return new JsonResult<>(userList, "获取用户列表成功");
@@ -33,7 +33,7 @@ public class JsonResultController {
     @RequestMapping("/map")
     public JsonResult<Map> getMap() {
         Map<String, Object> map = new HashMap<>(3);
-        User user = new User((long)1, "倪升武", null);
+        User user = new User((long)1, "倪升武", null, null);
         map.put("作者信息", user);
         map.put("博客地址", "http://blog.itcodai.com");
         map.put("CSDN地址", null);

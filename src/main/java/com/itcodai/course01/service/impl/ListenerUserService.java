@@ -12,6 +12,6 @@ public class ListenerUserService {
      */
     public User getUser() {
         // 实际中会根据具体的业务场景，从数据库中查询对应的信息
-        return new User(1L, "倪升武", "123456");
+        return new User(1L, "倪升武", "123456", null);
     }
 }
